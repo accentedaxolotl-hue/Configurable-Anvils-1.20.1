@@ -15,6 +15,8 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 @Mixin(value = AnvilMenu.class, priority = 1001)
 public class AnvilMenuMixin {
 
+    @Shadow private DataSlot cost;
+
     public int MaxCost(){
         if (ConfigurableAnvilsConfig.SERVER.enableNoMaxCost.get()) {
             return 2147483647;
@@ -65,10 +67,10 @@ public class AnvilMenuMixin {
         if (ConfigurableAnvilsConfig.SERVER.enableCustomRenamingCost.get()) {
             cir.setReturnValue (player.getAbilities().instabuild || player.experienceLevel >= this.cost.get() && this.cost.get() > -1);
         }
-        cir.setReturnValue(player.getAbilities().instabuild || player.experienceLevel >= this.cost.get() && this.cost.get() > 0);
+        else {
+            cir.setReturnValue(player.getAbilities().instabuild || player.experienceLevel >= this.cost.get() && this.cost.get() > 0);
+        }
     }
-
-    @Shadow private DataSlot cost;
 
     @Inject(
             method = "createResult",
