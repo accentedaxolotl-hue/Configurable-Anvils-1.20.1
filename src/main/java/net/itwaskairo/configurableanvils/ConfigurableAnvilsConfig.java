@@ -20,10 +20,10 @@ public class ConfigurableAnvilsConfig {
         public final ForgeConfigSpec.IntValue customNameLength;
         public final ForgeConfigSpec.IntValue customSharpnessCost;
         public final ForgeConfigSpec.IntValue customEfficiencyCost;
+        public final ForgeConfigSpec.IntValue customMendingCost;
         public final ForgeConfigSpec.ConfigValue<Double> customCostGlobalModifier;
 
         public final ForgeConfigSpec.BooleanValue enableCustomEnchantCosts;
-        public final ForgeConfigSpec.BooleanValue enableCustomMaxCost;
         public final ForgeConfigSpec.BooleanValue enableNoMaxCost;
         public final ForgeConfigSpec.BooleanValue enableCustomMaxNameLength;
         public final ForgeConfigSpec.BooleanValue enableCustomRenamingCost;
@@ -34,6 +34,7 @@ public class ConfigurableAnvilsConfig {
 
             customMaxCost = builder
                     .comment("The custom max cost for anvil use that will be implemented if toggled.")
+                    .comment("Vanilla is 50.")
                     .defineInRange("Custom Max Cost", 50, 0, 1000);
 
             customRenamingCost = builder
@@ -57,13 +58,13 @@ public class ConfigurableAnvilsConfig {
                     .comment("A custom cost that will be used (with scaling) when enchanting an item with efficiency in an anvil.")
                     .defineInRange("Custom Efficiency Cost", 4, 0, 1000);
 
+            customMendingCost = builder
+                    .comment("A custom cost that will be used when enchanting an item with mending in an anvil.")
+                    .defineInRange("Custom Mending Cost", 8, 0, 1000);
+
             builder.pop();
 
             builder.push("Configurable Anvils Toggles");
-
-            enableCustomMaxCost = builder
-                    .comment("Enable a custom max cost for anvils")
-                    .define("Custom Max Cost Toggle", false);
 
             enableNoMaxCost = builder
                     .comment("Enable anvils to not have any max cost")

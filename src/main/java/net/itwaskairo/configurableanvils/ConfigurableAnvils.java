@@ -14,14 +14,4 @@ public final class ConfigurableAnvils {
                 ConfigurableAnvilsConfig.SERVER_SPEC
         );
     }
-
-    /*                  TO-DO
-    1. Add optionally max cost clamping
-    2. Add optionally no limit cost
-    3. Add optionally separate costs for each tier of gear/tools
-    4. Add optionally free renaming
-    5. Add Anvil cost modifiers (Increasing + Decreasing)
-    6. more to come
-    ...
-    */
 }

@@ -11,10 +11,10 @@ public class AnvilScreenMixin {
     public int MaxCost() {
         if (ConfigurableAnvilsConfig.SERVER.enableNoMaxCost.get()) {
             return 2147483647;
-        } else if (ConfigurableAnvilsConfig.SERVER.enableCustomMaxCost.get()) {
-            return ConfigurableAnvilsConfig.SERVER.customMaxCost.get();
         }
-        return 40;
+        else {
+                return ConfigurableAnvilsConfig.SERVER.customMaxCost.get();
+        }
     }
 
     public int MaxLength() {

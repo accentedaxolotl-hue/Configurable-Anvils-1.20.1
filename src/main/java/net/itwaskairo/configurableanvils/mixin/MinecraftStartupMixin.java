@@ -9,15 +9,14 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-@Mixin(value = Minecraft.class, priority = 1001)
+@Mixin(value = Minecraft.class, priority = 100000)
 public class MinecraftStartupMixin {
-
     private static final Logger configurableAnvilsLogger = LogManager.getLogger("ConfigurableAnvils");
 
-            @Inject(method = "run", at = @At("HEAD"))
-            private void onStartup (CallbackInfo ci){
+    @Inject(method = "run", at = @At("HEAD"))
+    private void onStartup (CallbackInfo ci){
                 configurableAnvilsLogger.info("Startup Successful");
                 configurableAnvilsLogger.info("Unique Mixins loaded: {}", ConfigurableAnvilsMixinChecker.getPreAppliedMixinCount());
                 configurableAnvilsLogger.info("Unique Mixins applied: {}", ConfigurableAnvilsMixinChecker.getPostAppliedMixinCount());
-            }
+    }
 }

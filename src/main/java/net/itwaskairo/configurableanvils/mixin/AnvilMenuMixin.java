@@ -36,10 +36,9 @@ public abstract class AnvilMenuMixin extends AbstractContainerMenu {
         if (ConfigurableAnvilsConfig.SERVER.enableNoMaxCost.get()) {
             return 2147483647;
         }
-        else if (ConfigurableAnvilsConfig.SERVER.enableCustomMaxCost.get()){
+        else {
             return ConfigurableAnvilsConfig.SERVER.customMaxCost.get();
         }
-        return 40;
     }
 
     private static int maxLength(){
@@ -112,6 +111,9 @@ public abstract class AnvilMenuMixin extends AbstractContainerMenu {
         }
         if (enchantment == Enchantments.BLOCK_EFFICIENCY) {
             return ConfigurableAnvilsConfig.SERVER.customEfficiencyCost.get();
+        }
+        if (enchantment == Enchantments.MENDING) {
+            return ConfigurableAnvilsConfig.SERVER.customMendingCost.get();
         }
         return 0;
     }
